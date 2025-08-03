@@ -4,7 +4,7 @@ A machine learning project that clusters S&P 500 stocks based on their daily ret
 
 ## Overview
 
-This project analyzes 486 S&P 500 stocks using their 2015 daily return data to identify groups of stocks with similar price movement patterns. The analysis compares different clustering methodologies against a baseline model that groups stocks by their GICS (Global Industry Classification Standard) sectors.
+This project analyzes 486 S&P 500 stocks using their 2015 daily return data to identify groups of stocks with similar price movement patterns. The analysis compares three different K-means based clustering methodologies against a baseline model that groups stocks by their GICS (Global Industry Classification Standard) sectors.
 
 ## Dataset
 
@@ -33,16 +33,16 @@ Groups stocks directly by their GICS Sector classification (11 sectors total), a
 
 ## Results Summary
 
-| Method | Correlation Score | Balance | Notes |
-|--------|------------------|---------|-------|
-| Baseline (GICS) | 0.542 | Unbalanced by nature | Strong industry-based reference |
-| Vanilla K-means | 0.535 | Highly unbalanced | Poor performance |
-| Scaled K-means | 0.554 | Well balanced | Best overall approach |
-| PCA K-means | 0.555 | Well balanced | Similar to scaled but different clusters |
+| Method | Spearman Correlation Score | Notes |
+|--------|------------------|-------|
+| Baseline (GICS) | 0.542 | Strong industry-based reference |
+| Vanilla K-means | 0.535 | Highly unbalanced |
+| Scaled K-means | 0.554 | Balanced and reasonable clusters|
+| PCA K-means | 0.555 | Similar to scaled but different clusters |
 
 ## Files
 
-- `StockClustering.ipynb`: Main analysis notebook with complete implementation
+- `StockClustering.ipynb`: Main analysis notebook with complete implementation and discussions
 - `sp_500.csv`: S&P 500 company information including GICS sectors
 - `sp_500_prices.csv`: Historical daily price data for 2015
 
@@ -73,4 +73,4 @@ Open and run `StockClustering.ipynb` to reproduce the analysis. The notebook inc
 
 ## Conclusion
 
-The analysis demonstrates that price-based clustering can slightly outperform traditional sector-based groupings when using appropriate preprocessing techniques. Scaled K-means emerges as the most practical approach, offering both improved correlation scores and balanced cluster distributions.
+The analysis demonstrates that price-based clustering can slightly outperform traditional sector-based groupings measuring by the Spearman correlation within each cluster. Scaled K-means and PCA K-means offer both improved correlation scores and balanced cluster distributions. However, despite similar correlation scores, Scaled K-means and PCA K-means produce notably different clustering results. It is thus difficult to conclude which method is superior based on correlation metrics alone. A more meaningful evaluation could involve developing cluster-based trading strategies and comparing the financial performance of portfolios constructed from each method.
