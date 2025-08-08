@@ -24,13 +24,6 @@ Groups stocks directly by their GICS Sector classification (11 sectors total), a
 2. **Scaled K-means**: Standardizes each stock's returns individually, then applies K-means
 3. **PCA K-means**: Combines individual stock standardization with PCA dimensionality reduction (91 components explaining 80% variance) before K-means
 
-## Key Findings
-
-- **Scaled K-means** and **PCA K-means** both outperform the baseline with weighted average Spearman correlations of 0.554 and 0.555 respectively
-- Vanilla K-means produces highly unbalanced clusters (one cluster with 209/486 stocks)
-- Scaled approaches create more balanced cluster distributions
-- Despite similar correlation scores, Scaled K-means and PCA K-means produce notably different clustering results
-
 ## Results Summary
 
 | Method | Spearman Correlation Score | Notes |
@@ -39,6 +32,12 @@ Groups stocks directly by their GICS Sector classification (11 sectors total), a
 | Vanilla K-means | 0.535 | Highly unbalanced |
 | Scaled K-means | 0.554 | Balanced and reasonable clusters|
 | PCA K-means | 0.555 | Similar to scaled but different clusters |
+
+
+- **Scaled K-means** and **PCA K-means** both outperform the baseline with weighted average Spearman correlations of 0.554 and 0.555 respectively
+- Vanilla K-means produces highly unbalanced clusters (one cluster with 209/486 stocks)
+- Scaled approaches create more balanced cluster distributions
+- Despite similar correlation scores, Scaled K-means and PCA K-means produce notably different clustering results
 
 
 ## Conclusion
